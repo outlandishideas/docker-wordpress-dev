@@ -25,3 +25,6 @@ RUN apk update \
     && chmod +x phpmetrics.phar \
     && mv phpmetrics.phar /usr/local/bin/phpmetrics\
     && apk del $PHPIZE_DEPS
+    
+RUN apk update \
+    && apk add --no-cache openssh
