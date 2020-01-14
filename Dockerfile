@@ -27,7 +27,7 @@ RUN apk update \
     && apk del $PHPIZE_DEPS
     
 RUN apk update \
-    && apk add --no-cache openssh git
+    && apk add --no-cache openssh git bash
     
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x wp-cli.phar \
