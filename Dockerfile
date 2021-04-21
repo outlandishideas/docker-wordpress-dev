@@ -1,6 +1,6 @@
 FROM outlandish/wordpress
 
-COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN apk update \
     && apk add --no-cache $PHPIZE_DEPS \
