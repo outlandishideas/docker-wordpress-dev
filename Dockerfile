@@ -1,4 +1,4 @@
-FROM outlandish/wordpress
+FROM outlandish/wordpress:7.4
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
