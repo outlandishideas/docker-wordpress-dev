@@ -1,4 +1,4 @@
-FROM outlandish/wordpress
+FROM outlandish/wordpress:php8.0
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
@@ -25,10 +25,10 @@ RUN apk update \
     && chmod +x phpmetrics.phar \
     && mv phpmetrics.phar /usr/local/bin/phpmetrics\
     && apk del $PHPIZE_DEPS
-    
+
 RUN apk update \
     && apk add --no-cache openssh git bash
-    
+
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x wp-cli.phar \
     && mv wp-cli.phar /usr/local/bin/wp
