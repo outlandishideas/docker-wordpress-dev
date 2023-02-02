@@ -2,8 +2,12 @@ FROM outlandish/wordpress:8.0
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
+# Without `linux-headers`, the pecl installation failed 2/1/23 with:
+#
+##9 9.579 configure: error: rtnetlink.h is required, install the linux-headers package: apk add --update linux-headers
+##9 9.594 ERROR: `/tmp/pear/temp/xdebug/configure --with-php-config=/usr/local/bin/php-config' failed
 RUN apk update \
-    && apk add --no-cache $PHPIZE_DEPS \
+    && apk add --no-cache linux-headers $PHPIZE_DEPS \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
